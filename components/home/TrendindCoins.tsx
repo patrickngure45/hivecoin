@@ -2,9 +2,17 @@ import React from 'react'
 import { fetcher } from '@/lib/coingecko.actions'
 import DataTable from '@/components/ui/DataTable'
 import { formatCurrency } from '@/lib/utils'
+import { TrendingCoinsFallback } from '@/components/home/fallback'
 
 const TrendingCoins = async () => {
-  const trendingCoins = await fetcher<{ coins: TrendingCoin[] }>('/search/trending', undefined, 300)
+  let trendingCoins
+
+  try {
+    trendingCoins = await fetcher<{ coins: TrendingCoin[] }>('/search/trending', undefined, 300)
+  } catch (error) {
+    console.error('Error fetching trending coins:', error)
+    return <TrendingCoinsFallback />
+  }
   const columns: DataTableColumn<TrendingCoin>[] = [
     {
       header: 'Name',
