@@ -1,5 +1,5 @@
 import React from 'react'
-import DataTable from '@/components/ui/DataTable'
+import DataTable from '@/components/DataTable'
 
 // Coin overview skeleton fallback
 export const CoinOverViewFallback = () => {

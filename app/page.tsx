@@ -1,12 +1,12 @@
 import React, { Suspense } from 'react'
 import Image from 'next/image'
-import DataTable from '@/components/ui/DataTable'
+import DataTable from '@/components/DataTable'
 import Link from 'next/link'
 import { cn, formatCurrency } from '@/lib/utils'
 import { TrendingDown, TrendingUp } from 'lucide-react'
 import { fetcher } from '@/lib/coingecko.actions'
 import CoinOverview from '@/components/home/CoinOverview'
-import TrendingCoins from '@/components/home/TrendindCoins'
+import TrendingCoins from '@/components/home/TrendingCoins'
 import { CoinOverViewFallback, TrendingCoinsFallback } from '@/components/home/fallback'
 
 const columns: DataTableColumn<TrendingCoin>[] = [
