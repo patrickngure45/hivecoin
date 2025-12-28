@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <!-- Declares recommended IDE plugins for this project. WebStorm will prompt to install them on open. -->
+  <component name="ExternalDependencies">
+    <!-- Dracula Theme: clean hacker-style dark theme -->
+    <plugin id="com.draculatheme.idea" />
+    <!-- Material Theme UI: multiple popular variants (One Dark, Darker, Oceanic, etc.) -->
+    <plugin id="com.chrisrm.idea.MaterialThemeUI" />
+  </component>
+</project>
