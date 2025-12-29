@@ -23,26 +23,28 @@ const TrendingCoins = async () => {
   const columns: DataTableColumn<TrendingCoin>[] = [
     {
       header: 'Name',
+      headClassName: 'w-[50%]',
       cellClassName: 'name-cell',
       cell: (coin) => {
         const item = coin.item
         return (
-          <Link href={`/coins/${item.id}`} className="name-link">
-            <Image src={item.large} alt={item.name} width={36} height={36} className="rounded-full" />
-            <p>{item.name}</p>
+          <Link href={`/coins/${item.id}`} className="name-link flex items-center gap-2 min-w-0">
+            <Image src={item.large} alt={item.name} width={28} height={28} className="rounded-full shrink-0" />
+            <p className="truncate">{item.name}</p>
           </Link>
         )
       },
     },
     {
       header: '24h Change',
+      headClassName: 'w-[30%]',
       cellClassName: 'change-cell',
       cell: (coin) => {
         const item = coin.item
         const change = item.data.price_change_percentage_24h.usd
         const isTrendingUp = change > 0
         return (
-          <div className={cn('price-change', isTrendingUp ? 'text-green-500' : 'text-red-500')}>
+          <div className={cn('price-change flex items-center gap-1', isTrendingUp ? 'text-green-500' : 'text-red-500')}>
             {isTrendingUp ? (
               <TrendingUp width={16} height={16} />
             ) : (
@@ -55,7 +57,8 @@ const TrendingCoins = async () => {
     },
     {
       header: 'Price',
-      cellClassName: 'price-cell',
+      headClassName: 'hidden sm:table-cell',
+      cellClassName: 'price-cell hidden sm:table-cell',
       cell: (coin) => formatCurrency(coin.item.data.price),
     },
   ]
