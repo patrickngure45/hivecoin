@@ -12,9 +12,10 @@ const truncateWords = (text: string, maxWords = 4) => {
 }
 
 const Coins = async ({ searchParams }: NextPageProps) => {
-  const { page } = await searchParams
+  const pageParam = searchParams?.page
+  const pageStr = Array.isArray(pageParam) ? pageParam[0] : pageParam
 
-  const currentPage = Number(page) || 1
+  const currentPage = Number(pageStr) || 1
   const perPage = 20
 
   const coinsData = await fetcher<CoinMarketData[]>('/coins/markets', {
