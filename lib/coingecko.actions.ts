@@ -1,39 +1,42 @@
-'use server';
+'use server'
 
-import qs from 'query-string';
+import qs from 'query-string'
 
-const BASE_URL = process.env.COINGECKO_BASE_URL;
-const API_KEY = process.env.COINGECKO_API_KEY;
-
-if (!BASE_URL) throw new Error('Could not get base url');
-if (!API_KEY) throw new Error('Could not get api key');
+// Read environment variables at module scope, but do not throw here to keep SSR/SSG builds safe.
+// Netlify may not provide these during certain build phases; we will handle absence lazily at call time.
+const BASE_URL = process.env.COINGECKO_BASE_URL || 'https://api.coingecko.com/api/v3'
+const API_KEY = process.env.COINGECKO_API_KEY
 
 export async function fetcher<T>(
-    endpoint: string,
-    params?: QueryParams,
-    revalidate = 60,
+  endpoint: string,
+  params?: QueryParams,
+  revalidate = 60,
 ): Promise<T> {
-    const url = qs.stringifyUrl(
-        {
-            url: `${BASE_URL}/${endpoint}`,
-            query: params,
-        },
-        { skipEmptyString: true, skipNull: true },
-    );
+  const base = BASE_URL?.replace(/\/$/, '') // ensure no trailing slash
+  const path = endpoint.startsWith('/') ? endpoint : `/${endpoint}`
 
-    const response = await fetch(url, {
-        headers: {
-            'x-cg-demo-api-key': API_KEY,
-            'Content-Type': 'application/json',
-        } as Record<string, string>,
-        next: { revalidate },
-    });
+  const url = qs.stringifyUrl(
+    {
+      url: `${base}${path}`,
+      query: params,
+    },
+    { skipEmptyString: true, skipNull: true },
+  )
 
-    if (!response.ok) {
-        const errorBody: CoinGeckoErrorBody = await response.json().catch(() => ({}));
+  // Build headers conditionally to avoid undefined values
+  const headers: Record<string, string> = { 'Content-Type': 'application/json' }
+  if (API_KEY) headers['x-cg-demo-api-key'] = API_KEY
 
-        throw new Error(`API Error: ${response.status}: ${errorBody.error || response.statusText} `);
-    }
+  const response = await fetch(url, {
+    headers,
+    next: { revalidate },
+  })
 
-    return response.json();
+  if (!response.ok) {
+    const errorBody: CoinGeckoErrorBody = await response.json().catch(() => ({}))
+
+    throw new Error(`API Error: ${response.status}: ${errorBody.error || response.statusText} `)
+  }
+
+  return response.json()
 }

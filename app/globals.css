@@ -124,21 +124,23 @@
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.556 0 0);
 
-    /* Brand colors */
-    --dark-900: #000510;
-    --dark-700: #0f1316;
-    --dark-500: #1a2027;
-    --dark-400: #1e2833;
+    /* Brand colors (retuned for Binance Hive: black + red) */
+    --dark-900: #000000;
+    --dark-700: #0b0b0b;
+    --dark-500: #111111;
+    --dark-400: #1a1a1a;
 
-    --purple-600: #1b254b;
-    --purple-100: #a3aed0;
+    /* Repurpose purple tokens to neutral/red for minimal code changes */
+    --purple-600: #b91c1c; /* deep red (tailwind red-700) used for borders/accents */
+    --purple-100: #e5e7eb; /* light gray for secondary text/icons */
 
-    --green-500: #76da44;
-    --green-400: #2ebe7b;
-    --green-300: #99e39e;
+    /* Keep greens for gains; adjust slightly for clarity on black */
+    --green-500: #22c55e; /* tailwind green-500 */
+    --green-400: #34d399; /* tailwind green-400 */
+    --green-300: #86efac; /* tailwind green-300 */
 
-    --red-500: #ff685f;
-    --yellow-500: #dabe44;
+    --red-500: #ef4444; /* tailwind red-500 for losses */
+    --yellow-500: #f59e0b; /* amber-500 */
 }
 
 @layer base {
@@ -147,6 +149,11 @@
     }
     body {
         @apply bg-dark-700 text-foreground;
+        /* App backdrop: dark to deep-red gradient replacing image (emphasis on red + black) */
+        background: 
+            radial-gradient(1200px 700px at 85% 0%, rgba(185,28,28,0.30), rgba(0,0,0,0) 60%),
+            linear-gradient(180deg, #0a0a0a 0%, #000000 65%, #1a0000 100%);
+        background-attachment: fixed;
     }
 }
 
@@ -186,10 +193,10 @@
             }
 
             nav {
-                @apply flex h-full items-center;
+                @apply flex h-full items-center overflow-x-auto whitespace-nowrap gap-2;
 
                 .nav-link {
-                    @apply px-6 py-5 flex items-center transition-all hover:text-white font-medium h-full text-purple-100 cursor-pointer;
+                    @apply px-6 py-5 flex items-center transition-all font-medium h-full text-white text-base cursor-pointer;
                 }
 
                 .nav-link.is-active {
@@ -211,7 +218,7 @@
         }
 
         .button-group {
-            @apply flex gap-1 xl:gap-2 items-center;
+            @apply flex gap-1 xl:gap-2 items-center overflow-x-auto whitespace-nowrap;
         }
 
         .config-button {
@@ -586,7 +593,7 @@
             @apply bg-dark-500 rounded-xl max-h-fit overflow-hidden;
 
             .rank-cell {
-                @apply pl-5 max-w-20! py-5 font-medium text-purple-100;
+                @apply pl-3 sm:pl-5 max-w-20! py-3 sm:py-5 font-medium text-purple-100 text-sm sm:text-base;
 
                 a {
                     @apply absolute inset-0 z-10;
@@ -594,10 +601,14 @@
             }
 
             .token-cell {
-                @apply py-3 font-semibold;
+                @apply py-2 sm:py-3 font-semibold text-sm sm:text-base;
 
                 .token-info {
-                    @apply flex items-center gap-3;
+                    @apply flex items-center gap-2 sm:gap-3;
+
+                    .token-icon {
+                        @apply size-7 sm:size-9;
+                    }
 
                     p {
                         @apply max-w-full truncate;
@@ -606,19 +617,20 @@
             }
 
             .price-cell {
-                @apply py-4 font-medium;
+                @apply py-3 sm:py-4 font-medium text-sm sm:text-base;
             }
 
             .change-cell {
-                @apply font-medium;
+                @apply font-medium text-sm sm:text-base;
             }
 
             .change-value {
                 @apply flex gap-1 items-center font-medium;
             }
 
+            /* Hide Market Cap on very small screens for better fit */
             .market-cap-cell {
-                @apply pr-5 font-medium;
+                @apply hidden sm:table-cell pr-3 sm:pr-5 font-medium;
             }
         }
     }
@@ -837,7 +849,7 @@
 
     #coins-pagination {
         .pagination-content {
-            @apply flex w-full;
+            @apply flex w-full flex-wrap items-center justify-center gap-2;
         }
 
         .pagination-control {
@@ -861,14 +873,14 @@
         }
 
         .pagination-pages {
-            @apply flex flex-1 justify-center gap-2;
+            @apply flex flex-1 justify-center gap-1 sm:gap-2 overflow-x-auto px-1;
 
             .ellipsis {
-                @apply px-3 py-2 text-base;
+                @apply px-2 sm:px-3 py-2 text-sm sm:text-base;
             }
 
             .page-link {
-                @apply hover:bg-dark-400! rounded-sm text-base cursor-pointer;
+                @apply hover:bg-dark-400! rounded-sm text-sm sm:text-base cursor-pointer;
             }
 
             .page-link-active {
@@ -966,4 +978,22 @@
 
 .custom-scrollbar [data-slot='table-container']::-webkit-scrollbar-thumb:hover {
     background: #171a34;
+}
+:root {
+    /* Binance Hive brand tokens available by default (no .dark class required) */
+    --dark-900: #000000;
+    --dark-700: #0b0b0b;
+    --dark-500: #111111;
+    --dark-400: #1a1a1a;
+
+    /* Repurposed purple to red/neutral so existing utility classes pick new theme */
+    --purple-600: #b91c1c; /* deep red accents */
+    --purple-100: #e5e7eb; /* light gray for secondary text/icons */
+
+    /* Support colors */
+    --green-500: #22c55e;
+    --green-400: #34d399;
+    --green-300: #86efac;
+    --red-500: #ef4444;
+    --yellow-500: #f59e0b;
 }
