@@ -5,6 +5,8 @@ import CoinsPagination from '@/components/CoinsPagination'
 import { cn, formatPercentage, formatCurrency } from '@/lib/utils'
 import DataTable from '@/components/DataTable'
 
+export const dynamic = 'force-dynamic'
+
 const truncateWords = (text: string, maxWords = 4) => {
   const words = text.trim().split(/\s+/)
   if (words.length <= maxWords) return text

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="143ddab7-2ad7-42d5-bb49-ab7794fa0ff3" name="Changes" comment="" />
+    <list default="true" id="143ddab7-2ad7-42d5-bb49-ab7794fa0ff3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/coins/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/coins/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +52,7 @@
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ngure\\Documents\\projects\\hivecoin\\node_modules\\prettier",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
     "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "C:\\Users\\ngure\\Documents\\projects\\hivecoin\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2025.2.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -92,7 +96,7 @@
       <workItem from="1766956304880" duration="9000" />
       <workItem from="1766985119861" duration="3848000" />
       <workItem from="1766990992773" duration="48000" />
-      <workItem from="1766991051498" duration="22289000" />
+      <workItem from="1766991051498" duration="23018000" />
     </task>
     <servers />
   </component>

@@ -4,6 +4,8 @@ import TrendingCoins from '@/components/home/TrendingCoins'
 import { CoinOverViewFallback, TrendingCoinsFallback } from '@/components/home/fallback'
 import Categories from '@/components/home/Categories'
 
+export const dynamic = 'force-dynamic'
+
 const Page = async () => {
   return (
     <main className="main-container">

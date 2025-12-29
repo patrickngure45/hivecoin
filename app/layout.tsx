@@ -13,9 +13,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NETLIFY_SITE_URL || process.env.URL || 'http://localhost:3000'
+
 export const metadata: Metadata = {
-  title: "Hive Coin",
-  description: "Hive coin crypto screener App with a build-in-High-Frequency Terminal & Dashboard ",
+  metadataBase: new URL(siteUrl),
+  title: 'Hive Coin',
+  description: 'Hive coin crypto screener App with a build-in-High-Frequency Terminal & Dashboard ',
 };
 
 export default function RootLayout({
