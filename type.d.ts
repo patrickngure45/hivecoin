@@ -1,8 +1,8 @@
 type OHLCData = [number, number, number, number, number];
 
 interface NextPageProps {
-    params?: { [key: string]: string };
-    searchParams?: { [key: string]: string | string[] | undefined };
+    params?: Promise<{ [key: string]: string }>; // Next.js may provide params as a Promise in RSC
+    searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 interface CandlestickChartProps {

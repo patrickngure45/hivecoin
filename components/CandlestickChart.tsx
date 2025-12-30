@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState, useTransition } from 'react'
+import { useEffect, useRef, useState, useTransition } from 'react'
 import { getCandlestickConfig, getChartConfig, PERIOD_BUTTONS, PERIOD_CONFIG } from '@/constants'
 import { CandlestickSeries, createChart, IChartApi, ISeriesApi } from 'lightweight-charts'
 import { convertOHLCData } from '@/lib/utils'
@@ -27,7 +27,6 @@ const CandlestickChart = ({
       const url = new URL(`https://api.coingecko.com/api/v3/coins/${coinId}/ohlc`)
       url.searchParams.set('vs_currency', 'usd')
       url.searchParams.set('days', String(days))
-      url.searchParams.set('precision', 'full')
 
       const res = await fetch(url.toString(), {
         headers: apiKey ? { 'x-cg-demo-api-key': apiKey } : undefined,
@@ -90,7 +89,7 @@ const CandlestickChart = ({
           <span className="text-sm mx-2 font-medium text-purple-100/50">Period:</span>
           {PERIOD_BUTTONS.map(({ value, label }) => (
             <button
-              key="1hr"
+              key={value}
               className={period === value ? 'config-button-active' : 'config-button'}
               onClick={() => handlePeriodChange(value)}
               disabled={loading}

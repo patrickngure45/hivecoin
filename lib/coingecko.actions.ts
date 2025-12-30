@@ -40,3 +40,14 @@ export async function fetcher<T>(
 
   return response.json()
 }
+
+// Minimal server helper to provide a pool identifier compatible with components expecting pool.id
+// This avoids build-time failures when GeckoTerminal integration is not yet available.
+export async function getPools(
+  coinId: string,
+  network?: string | null,
+  contract?: string | null,
+): Promise<{ id: string }> {
+  const id = network && contract ? `${network}:${contract}` : coinId
+  return { id }
+}

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import SearchModal from '@/components/ui/SearchModal'
 
 const Header = () => {
   const pathname = usePathname()
@@ -42,11 +43,6 @@ const Header = () => {
           >
             Home
           </Link>
-
-          <span className="nav-link flex-shrink-0 px-2 sm:px-3 py-2 border-b-2 border-transparent text-gray-300 hover:text-red-400 hover:border-red-500/70 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 rounded-sm">
-            Search
-          </span>
-
           <Link
             href="/coins"
             className={cn(
@@ -57,6 +53,17 @@ const Header = () => {
             aria-current={pathname === '/coins' ? 'page' : undefined}
           >
             All Coins
+          </Link>
+          <Link
+            href="/about"
+            className={cn(
+              'nav-link flex-shrink-0 px-2 sm:px-3 py-2 border-b-2 border-transparent text-gray-300 hover:text-red-400 hover:border-red-500/70 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 rounded-sm',
+              pathname === '/coins' && 'text-white border-red-500',
+              { 'is-active': pathname === '/about' },
+            )}
+            aria-current={pathname === '/about' ? 'page' : undefined}
+          >
+            Join
           </Link>
         </nav>
       </div>

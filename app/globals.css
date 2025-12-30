@@ -758,7 +758,7 @@
             }
 
             .select-content[data-converter] {
-                @apply bg-dark-400 max-h-125;
+                @apply bg-dark-400 max-h-[60vh] max-w-[90vw] w-auto overflow-y-auto;
 
                 .select-item {
                     @apply cursor-pointer hover:bg-dark-500!;
@@ -996,4 +996,33 @@
     --green-300: #86efac;
     --red-500: #ef4444;
     --yellow-500: #f59e0b;
+}
+
+
+/* Responsive enhancements for coins and coin details pages */
+#live-data-wrapper .header {
+    @apply flex items-center gap-3 md:gap-4 mb-4;
+}
+
+#live-data-wrapper .exchange-list {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 w-full;
+}
+
+#live-data-wrapper .exchange-item {
+    @apply bg-dark-500 rounded-lg px-4 py-3 flex flex-wrap items-center justify-between gap-2 sm:gap-3;
+}
+
+#live-data-wrapper .exchange-item > span:first-child {
+    @apply truncate max-w-full flex-1;
+}
+
+#live-data-wrapper .trade-link {
+    @apply text-green-500 inline-flex items-center gap-1 text-sm sm:text-base whitespace-nowrap;
+}
+
+/* Coins table small-screen tweaks */
+@media (max-width: 640px) {
+    #coins-page .coins-table {
+        @apply overflow-x-auto;
+    }
 }

@@ -73,12 +73,7 @@ export const CategoriesFallback = () => {
   return (
     <div id="categories-fallback">
       <h4>Top Categories</h4>
-      <DataTable
-        data={data}
-        columns={columns}
-        rowKey={(row) => row.id}
-        tableClassName="mt-3"
-      />
+      <DataTable data={data} columns={columns} rowKey={(row) => row.id} tableClassName="mt-3" />
     </div>
   )
 }
