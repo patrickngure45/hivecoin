@@ -141,9 +141,15 @@ const CommunityMarquee = () => {
       ],
     },
   ]
-
+  
+  // Types for content items
+  type ImageItem = { type: 'img'; src: string; credit: string; w: number; h: number }
+  type StatItem = { type: 'stat'; value: string; label: string; w: number; h: number }
+  type GroupItem = { type: 'group'; children: Item[] }
+  type Item = ImageItem | StatItem | GroupItem
+  
   // Helper to render individual blocks
-  const RenderBlock = ({ item, index }) => {
+  const RenderBlock = ({ item, index }: { item: Item; index?: number }) => {
     const commonClasses =
       'shrink-0 rounded-2xl relative overflow-hidden bg-[#1F1F1F] border border-gray-800'
 
@@ -188,7 +194,7 @@ const CommunityMarquee = () => {
       return (
         <div className="flex gap-4 w-full">
           {item.children.map((child, childIndex) => (
-            <RenderBlock key={`${index}-${childIndex}`} item={child} />
+            <RenderBlock key={`${index}-${childIndex}`} item={child as Item} />
           ))}
         </div>
       )
@@ -233,7 +239,7 @@ const CommunityMarquee = () => {
               {contentColumns.map((col, idx) => (
                 <div key={idx} className="shrink-0 flex flex-col gap-4">
                   {col.items.map((item, itemIdx) => (
-                    <RenderBlock key={itemIdx} item={item} index={itemIdx} />
+                    <RenderBlock key={itemIdx} item={item as Item} index={itemIdx} />
                   ))}
                 </div>
               ))}
@@ -244,7 +250,7 @@ const CommunityMarquee = () => {
               {contentColumns.map((col, idx) => (
                 <div key={`dup-${idx}`} className="shrink-0 flex flex-col gap-4">
                   {col.items.map((item, itemIdx) => (
-                    <RenderBlock key={`dup-${itemIdx}`} item={item} index={itemIdx} />
+                    <RenderBlock key={`dup-${itemIdx}`} item={item as Item} index={itemIdx} />
                   ))}
                 </div>
               ))}

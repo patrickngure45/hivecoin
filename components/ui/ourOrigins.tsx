@@ -1,8 +1,18 @@
 import React from 'react'
 
+type Article = {
+  title: string
+  description: string
+  source: string
+  date: string
+  url: string
+  style: 'dark' | 'red'
+  icon: React.ReactNode
+}
+
 const OurOrigins = () => {
   // Data for the articles
-  const articles = [
+  const articles: Article[] = [
     {
       title: 'The Great Steem Wars',
       description: "Inside Crypto's Biggest Hostile Takeover",
@@ -37,8 +47,19 @@ const OurOrigins = () => {
     },
   ]
 
+  // Types
+  type Article = {
+    title: string
+    description: string
+    source: string
+    date: string
+    url: string
+    style: 'dark' | 'red'
+    icon: React.ReactNode
+  }
+
   // Sub-component for the Article Cards
-  const ArticleCard = ({ article }) => {
+  const ArticleCard = ({ article }: { article: Article }) => {
     // Styles for "Dark" style card (Left card in HTML)
     if (article.style === 'dark') {
       return (

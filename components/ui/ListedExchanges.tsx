@@ -189,9 +189,13 @@ const ListedExchanges = () => {
                 loading="lazy"
                 src={exchange.img}
                 // Fallback for broken images
-                onError={(e) => {
-                  e.target.style.display = 'none'
-                  e.target.parentElement.innerHTML = `<span class="text-xs font-bold text-gray-500">${exchange.name}</span>`
+                onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                  const img = e.currentTarget
+                  img.style.display = 'none'
+                  const parent = img.parentElement
+                  if (parent) {
+                    parent.innerHTML = `<span class="text-xs font-bold text-gray-500">${exchange.name}</span>`
+                  }
                 }}
               />
             </a>

@@ -1,12 +1,19 @@
 import React from 'react'
 
 // Sub-component: The Circular Progress Chart
-const DonutChart = ({ percentage, color, staked, liquid }) => {
+type DonutChartProps = {
+  percentage: string
+  color: string
+  staked: string
+  liquid: string
+}
+
+const DonutChart = ({ percentage, color, staked, liquid }: DonutChartProps) => {
   // Calculating the circumference based on r=72 (2 * PI * 72 ≈ 452.39)
   const circumference = 452.3893421169302
   // The HTML provided specific offsets. We approximate the visual logic here.
   // HIVE (42%) -> Offset ~262, HBD (77%) -> Offset ~103
-  const getOffset = (percent) => {
+  const getOffset = (percent: string) => {
     const num = parseInt(percent)
     if (num === 42) return 262.45
     if (num === 77) return 103.82
@@ -67,7 +74,31 @@ const DonutChart = ({ percentage, color, staked, liquid }) => {
 }
 
 // Sub-component: The Individual Token Card
-const TokenCard = ({ data }) => {
+type Feature = {
+  icon: React.ReactNode
+  text?: string
+  prefix?: string
+  highlight?: string
+  suffix?: string
+}
+
+type Chart = {
+  percent: string
+  staked: string
+  liquid: string
+}
+
+type TokenData = {
+  title: string
+  badge: string
+  color: string
+  image: string
+  btnText: string
+  features: Feature[]
+  chart: Chart
+}
+
+const TokenCard = ({ data }: { data: TokenData }) => {
   const { title, badge, color, image, btnText, features, chart } = data
 
   return (

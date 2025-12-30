@@ -22,8 +22,15 @@ const SignUp = () => {
   })
 
   // Handle Input Changes
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const target = e.target
+    const name = (target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement).name as keyof typeof formData
+    const value = (target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement).value
+    const type = (target as HTMLInputElement).type
+    const checked = (target as HTMLInputElement).checked
+
     setFormData((prev) => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value,
@@ -31,7 +38,7 @@ const SignUp = () => {
   }
 
   // Handle Form Submission
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log('Form Submitted:', formData)
     alert('Sign up simulated!')

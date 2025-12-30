@@ -31,7 +31,7 @@ const BlockchainActivity = () => {
   ]
 
   // Helper to truncate hash
-  const truncateHash = (hash) => `${hash.substring(0, 4)}...${hash.substring(hash.length - 4)}`
+  const truncateHash = (hash: string): string => `${hash.substring(0, 4)}...${hash.substring(hash.length - 4)}`
 
   return (
     <div className="w-full relative mb-[50px] bg-[#121212]/80 backdrop-blur-xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] border border-gray-800 rounded-3xl p-6 max-[600px]:bg-transparent max-[600px]:backdrop-blur-none max-[600px]:shadow-none max-[600px]:border-none max-[600px]:p-0">
@@ -89,8 +89,8 @@ const BlockchainActivity = () => {
                 alt={tx.user}
                 className="w-12 h-12 rounded-full shrink-0 bg-gray-700 object-cover ring-2 ring-[#1F1F1F]"
                 src={`https://images.hive.blog/u/${tx.user}/avatar/small`}
-                onError={(e) => {
-                  e.target.style.display = 'none'
+                onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                  e.currentTarget.style.display = 'none'
                 }} // Fallback handling if needed
               />
 
