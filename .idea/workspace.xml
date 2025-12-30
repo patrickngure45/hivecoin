@@ -7,12 +7,7 @@
     <list default="true" id="143ddab7-2ad7-42d5-bb49-ab7794fa0ff3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/about/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/about/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/CommunityMarquee.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/CommunityMarquee.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/ListedExchanges.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/ListedExchanges.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/Tokenomics.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Tokenomics.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/blockChainActivity.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/blockChainActivity.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/ourOrigins.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/ourOrigins.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Header.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

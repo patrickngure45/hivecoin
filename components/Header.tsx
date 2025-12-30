@@ -32,7 +32,7 @@ const Header = () => {
 
         <nav>
           <Link
-            href="/"
+            href="/hivekchain"
             className={cn(
               'nav-link flex-shrink-0 px-2 sm:px-3 py-2 border-b-2 border-transparent text-gray-300 hover:text-red-400 hover:border-red-500/70 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 rounded-sm',
               pathname === '/' && 'text-white border-red-500',

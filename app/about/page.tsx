@@ -23,10 +23,11 @@ const SignUp = () => {
 
   // Handle Input Changes
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
     const target = e.target
-    const name = (target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement).name as keyof typeof formData
+    const name = (target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement)
+      .name as keyof typeof formData
     const value = (target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement).value
     const type = (target as HTMLInputElement).type
     const checked = (target as HTMLInputElement).checked
@@ -45,7 +46,7 @@ const SignUp = () => {
   }
 
   return (
-    <main className="container">
+    <main className="container py-6">
       <div className="bg-[#050505] text-[#E5E5E5] font-sans antialiased min-h-screen flex flex-col md:flex-row overflow-hidden selection:bg-[#DC2626] selection:text-white relative">
         {/* CSS Styles for Animations & Custom Scrollbar */}
         <style>{`
